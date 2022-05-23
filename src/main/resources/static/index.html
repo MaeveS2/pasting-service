@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="">
+    <meta property="og:title" content="pasting-service">
+    <meta property="og:description" content="pastebin but lower quality">
+    <title>pasting-service</title>
+
+    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+
+    <script defer src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+    <script defer src="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+    <script defer src="js/script.js"></script>
+</head>
+<body>
+<div class="navbar navbar-fixed-top" style="position: absolute;">
+    <div class="navbar-inner">
+        <div class="container" style="width: auto; padding: 0 20px;">
+            <a class="brand" href="#">pasting-service</a>
+            <ul class="nav">
+                <li><a href="#">Home</a></li>
+                <li><a href="/latest">Latest</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Theme<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="hero-unit">
+        <h1>pasting-service</h1>
+        <h2>pastebin but lower quality</h2>
+    </div>
+</div>
+<div class="container">
+    <div class="form-group">
+        <label for="paste-text"><b>New Paste:</b></label>
+        <textarea class="form-control" id="paste-text" rows="10" maxlength="1000000" style="width: 100%; resize: none; font-family: monospace;"></textarea>
+    </div>
+    <div class="form-group">
+
+        <div class="form-group field-paste-name">
+            <label class="control-label col-sm-3" for="paste-name">Paste Title:</label>
+            <div class="col-sm-9 field-wrapper">
+                <input type="text" class="form-control" id="paste-name" maxlength="100">
+            </div>
+        </div>
+
+        <div class="form-group field-paste-format">
+            <label class="control-label col-sm-3" for="paste-lang">Syntax Highlighting:</label>
+            <div class="col-sm-9 field-wrapper">
+                <select class="form-control form-control-sm" id="paste-lang">
+                    <option value="nohighlight" data-language="text">Plain Text</option>
+                    <optgroup label="『POPULAR LANGUAGES』">
+                        <option value="language-c" data-language="c">C</option>
+                        <option value="language-csharp" data-language="csharp">C#</option>
+                        <option value="language-cpp" data-language="cpp">C++</option>
+                        <option value="language-java" data-language="java">Java</option>
+                        <option value="language-py" data-language="python">Python</option>
+                        <option value="language-rust" data-language="rust">Rust</option>
+                        <option value="language-go" data-language="go">Go</option>
+                        <option value="language-css" data-language="css">CSS</option>
+                        <option value="language-html" data-language="html4strict">HTML</option>
+                        <option value="language-json" data-language="json">JSON</option>
+                        <option value="language-java" data-language="java">Java</option>
+                        <option value="language-js" data-language="javascript">JavaScript</option>
+                        <option value="language-bash" data-language="bash">Bash</option>
+                    </optgroup>
+                    <optgroup label="『OTHER LANGUAGES』">
+                        <option value="language-lua" data-language="lua">Lua</option>
+                        <option value="language-objectivec" data-language="objc">Objective C</option>
+                        <option value="language-php" data-language="php">PHP</option>
+                        <option value="language-perl" data-language="perl">Perl</option>
+                        <option value="language-ruby" data-language="ruby">Ruby</option>
+                        <option value="language-swift" data-language="swift">Swift</option>
+                    </optgroup>
+                </select>
+            </div>
+        </div>
+
+
+
+    </div>
+    <button type="button" class="btn btn-primary" id="btn-create">Create new paste</button>
+</div>
+</body>
+</html>

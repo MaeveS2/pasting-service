@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title th:text="${code}+'-'+${message}"></title>
+
+        <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
+    </head>
+    <body style="margin-top:40px;">
+        <div class="container">
+            <div class="hero-unit">
+                <h1 th:text="'Error ' + ${code}"></h1>
+                <p><em th:text="${message}"></em></p>
+            </div>
+        </div>
+    </body>
+</html>

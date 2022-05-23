@@ -1,0 +1,9 @@
+.file-info-divider {
+  display: inline-block;
+  width: 1px;
+  height: 18px;
+  margin-right: 4px;
+  margin-left: 4px;
+  vertical-align: middle;
+  border-left: 1px solid var(--color-border-default);
+}

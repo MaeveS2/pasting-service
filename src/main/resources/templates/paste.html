@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://thymeleaf.org" >
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title th:text="${title}"></title>
+
+    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/default.min.css">
+    <link rel="stylesheet" href="css/style.css">
+
+    <script defer src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+    <script defer src="js/script.js"></script>
+</head>
+<body style="margin-top:40px;">
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+
+<div class="navbar navbar-fixed-top" style="position: absolute;">
+    <div class="navbar-inner">
+        <div class="container" style="width: auto; padding: 0 20px;">
+            <a class="brand" href="#">pasting-service</a>
+            <ul class="nav">
+                <li><a href="/">Home</a></li>
+                <li><a href="/latest">Latest</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="hero-unit" style="margin-top: 10px;">
+        <h1 th:text="${title}"></h1><em th:text="'Paste ID: ' + ${id}"></em>
+        <br>
+        <pre style="height: 550px; overflow: auto;" ><code th:class="${lang}" id="paste" th:text="${text}"></code></pre>
+
+        <div>
+            <div style="float: left;">
+                <button type="button" class="btn btn-primary" id="btn-copy">Copy</button>
+                <button type="button" class="btn btn-secondary" id="btn-share">Share</button>
+            </div>
+            <div style="float: right; font-size: 12px;">
+                <span th:text="${time}"></span><span class="file-info-divider"></span><span th:text="${size}"></span>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
