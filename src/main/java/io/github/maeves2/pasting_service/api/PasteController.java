@@ -3,6 +3,7 @@ package io.github.maeves2.pasting_service.api;
 import io.github.maeves2.pasting_service.PasteRepository;
 import io.github.maeves2.pasting_service.model.Paste;
 import io.github.maeves2.pasting_service.model.PastePayload;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.Instant;
@@ -12,6 +13,7 @@ import java.util.UUID;
 public class PasteController {
     private PasteRepository repo;
 
+    @Autowired
     public PasteController(PasteRepository repo) {
         this.repo = repo;
     }

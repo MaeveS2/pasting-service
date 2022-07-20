@@ -12,29 +12,67 @@ public class Utilities {
     public static String convertBytesToConvenientUnit(int bytes) {
         if (bytes < 10000) {
             return String.valueOf((float) bytes/1024).substring(0, 4) + "KB";
-        } else if (bytes < 10000000) {
-            return String.valueOf((float) (bytes/1024)/1024).substring(0, 4) + "MB";
-        } else {
-            return String.valueOf((float) ((bytes/1024)/1024)/1024).substring(0, 4) + "MB";
         }
+        if (bytes < 10000000) {
+            return String.valueOf((float) (bytes/1024)/1024).substring(0, 4) + "MB";
+        }
+        return String.valueOf((float) ((bytes/1024)/1024)/1024).substring(0, 4) + "MB";
     }
 
     public static String humanReadableDate(Instant instant) {
-        String suffix;
-        var formatter = new SimpleDateFormat("dd", Locale.ENGLISH);
-        if (formatter.format(Date.from(instant)).endsWith(String.valueOf(1))) {
-            suffix = "st";
-        } else if (formatter.format(Date.from(instant)).endsWith(String.valueOf(2))) {
-            suffix = "nd";
-        } else if (formatter.format(Date.from(instant)).endsWith(String.valueOf(3))) {
-            suffix = "rd";
-        } else {
-            suffix = "th";
-        }
+        var days = Integer.parseInt(new SimpleDateFormat("dd", Locale.ENGLISH).format(Date.from(instant)));
+        var suffix = switch (days) {
+            case 1, 21, 31 -> "st";
+            case 2, 22 -> "nd";
+            case 3, 23 -> "rd";
+            default -> "th";
+        };
+
 
         return new SimpleDateFormat("MMMM dd'" + suffix + "' yyyy, hh:mm:ss ", Locale.ENGLISH).format(Date.from(instant));
     }
 
+    // im sorry for hardcoding this in ;_;
+    public static String getErrorMessage(int status) {
+        return switch (status) {
+            case 300 -> "Multiple Choices";
+            case 301 -> "Moved Permanently";
+            case 302 -> "Found";
+            case 303 -> "See Other";
+            case 304 -> "Not Modified";
+            case 305 -> "Use Proxy";
+            case 307 -> "Temporary Redirect";
+            case 400 -> "Bad Request";
+            case 401 -> "Unauthorized";
+            case 402 -> "Payment Required";
+            case 403 -> "Forbidden";
+            case 404 -> "Not Found";
+            case 405 -> "Method Not Allowed";
+            case 406 -> "Not Acceptable";
+            case 407 -> "Proxy Authentication Required ";
+            case 408 -> "Request Timeout";
+            case 409 -> "Conflict";
+            case 410 -> "Gone";
+            case 411 -> "Length Required";
+            case 412 -> "Precondition Failed";
+            case 413 -> "Payload Too Large";
+            case 414 -> "URI Too Long";
+            case 415 -> "Unsupported Media Type";
+            case 416 -> "Range Not Satisfiable";
+            case 417 -> "Expectation Failed";
+            case 418 -> "I'm a teapot";
+            case 426 -> "Upgrade Required";
+            case 500 -> "Internal Server Error";
+            case 501 -> "Not Implemented";
+            case 502 -> "Bad Gateway";
+            case 503 -> "Service Unavailable";
+            case 504 -> "Gateway Timeout";
+            case 505 -> "HTTP Version Not Supported";
+            default -> throw new IllegalStateException("Unexpected value: " + status);
+        };
+    }
+
+    // examples to test formatting
     public static void initTestPastes(PasteRepository repository) {
         repository.save(new Paste("0", "C++ example", "#include <iostream>\n" +
                 "\n" +

@@ -3,6 +3,7 @@ package io.github.maeves2.pasting_service.view;
 import io.github.maeves2.pasting_service.PasteRepository;
 import io.github.maeves2.pasting_service.model.Paste;
 import io.github.maeves2.pasting_service.util.Utilities;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.servlet.error.ErrorController;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,6 +26,7 @@ import java.util.stream.StreamSupport;
 public class ThymeleafController implements ErrorController {
     private PasteRepository repo;
 
+    @Autowired
     public ThymeleafController(PasteRepository repo) {
         this.repo = repo;
         Utilities.initTestPastes(this.repo);
@@ -64,7 +66,7 @@ public class ThymeleafController implements ErrorController {
     @RequestMapping("/error")
     public String handleError(HttpServletRequest request, Model model) {
         var code = request.getAttribute(RequestDispatcher.ERROR_STATUS_CODE).toString();
-        var message = request.getAttribute(RequestDispatcher.ERROR_MESSAGE).toString();
+        var message = Utilities.getErrorMessage(Integer.parseInt(code));
         model.addAttribute("code", code);
         model.addAttribute("message", message);
         return "error";

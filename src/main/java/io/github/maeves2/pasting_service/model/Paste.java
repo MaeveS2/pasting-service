@@ -6,6 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.time.Instant;
+import java.util.UUID;
 
 @Entity
 @Getter
@@ -22,19 +23,10 @@ public class Paste {
     private String language;
 
     public Paste(String title, String text, String language) {
-        this.title = title;
-        this.text = text;
-        this.timestamp = Instant.now();
-        this.size = text.getBytes().length;
-        this.language = language;
+        this(UUID.randomUUID().toString(), title, text, Instant.now(), text.getBytes().length, language);
     }
 
     public Paste(String id, String title, String text, Instant timestamp, String language) {
-        this.id = id;
-        this.title = title;
-        this.text = text;
-        this.timestamp = timestamp;
-        this.size = text.getBytes().length;
-        this.language = language;
+        this(id, title, text, timestamp, text.getBytes().length, language);
     }
 }
