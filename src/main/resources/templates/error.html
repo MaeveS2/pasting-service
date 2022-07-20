@@ -13,6 +13,7 @@
             <div class="hero-unit">
                 <h1 th:text="'Error ' + ${code}"></h1>
                 <p><em th:text="${message}"></em></p>
+                <img th:src="'https://http.cat/' + ${code}">
             </div>
         </div>
     </body>

@@ -58,7 +58,6 @@ public class ThymeleafController implements ErrorController {
                 .sorted(Comparator.comparing(Paste::getTimestamp).reversed())
                 .collect(Collectors.toList());
         model.addAttribute("latest", latest);
-
         return "latest";
     }
 
