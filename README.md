@@ -1,4 +1,8 @@
 # pasting-service
 pastebin but lower quality
 
-hello unfortunately I cannot commit since i'm too stupid to use git :(
+i can commit now :)
+
+## Technology
+- Database: H2 with Spring Data JPA
+- UI: Thymeleaf (Spring MVC), Twitter Bootstrap (i know it looks old  or whatever and i don't care)
